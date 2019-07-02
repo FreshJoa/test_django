@@ -1,0 +1,28 @@
+{% extends 'my_html.html' %}
+
+{% block title %} List of movies {% endblock %}
+
+{% block body %}
+
+
+    {% if user.is_authenticated %}
+    Witam {{user.username}} <br>
+    <a href="{% url 'logout' %}" >Logout</a>
+    {% else %}
+    <a href="{% url 'login' %}" >Login</a>
+    {% endif %}
+
+    <p> Lista filmow do wyświetklenia </p>
+
+         <a  href="{% url 'new_movie' %}" >New</a>
+
+        {% for film in filmy %}
+        <div>
+            <h2>{{ film.name }}</h2>
+            <p> {{ film.description }}</p>
+            <a  href="{% url 'edit_movie' film.id %}" >Edit</a>
+            <a  href="{% url 'delete_movie' film.id %}" >Delete</a>
+        </div>
+        {% endfor %}
+
+{% endblock %}

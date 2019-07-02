@@ -1,0 +1,13 @@
+{% extends 'my_html.html' %}
+
+{% block title %} Confirm {% endblock %}
+
+{% block body %}
+
+    <h1>Do you want to delete {{ film.name }} ? </h1>
+    <form method="post">
+        {%  csrf_token %}
+        <button type="submit">Yes</button>
+    </form>
+
+{% endblock %}
